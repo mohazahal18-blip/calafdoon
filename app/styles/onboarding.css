@@ -1,0 +1,258 @@
+/* Brand tokens (--navy, --pink, etc.) and the base body style come from
+   app/styles/landing.css, imported once in app/layout.tsx. This file only
+   adds the extra --border token and auth/onboarding-specific styles. */
+:root {
+  --border: rgba(8, 16, 32, 0.12);
+}
+
+/* ---------------- Auth (login/signup) ---------------- */
+.auth-page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  padding-top: calc(24px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+}
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+}
+.auth-card h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.auth-sub {
+  margin-top: 8px;
+  color: #4b5568;
+  font-size: 14.5px;
+}
+.auth-sub a,
+.onboarding-sub a {
+  color: var(--pink);
+  font-weight: 600;
+}
+.auth-error {
+  color: var(--pink);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.auth-legal {
+  margin-top: 24px;
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+.auth-legal a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---------------- Shared form controls ---------------- */
+form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 18px 0 6px;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form input[type="number"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  font-family: inherit;
+  font-size: 15px;
+  background: white;
+}
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: 2px solid var(--pink);
+  outline-offset: 1px;
+}
+form button[type="submit"] {
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: var(--pink);
+  color: white;
+  font-weight: 600;
+  font-size: 15.5px;
+  cursor: pointer;
+}
+form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+fieldset legend {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 0;
+}
+label.radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 10px 0;
+}
+.field-hint {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: #6b7280;
+}
+
+/* Chip-style multi-select (checkboxes styled as pills) */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  cursor: pointer;
+}
+.chip:has(input:checked) {
+  border-color: var(--pink);
+  background: var(--pink-soft);
+  color: var(--navy);
+}
+.chip input {
+  accent-color: var(--pink);
+}
+
+.age-range {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.age-range input {
+  flex: 1;
+}
+
+/* ---------------- Onboarding shell ---------------- */
+.onboarding-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+  padding-top: calc(20px + env(safe-area-inset-top, 0px));
+}
+.onboarding-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.onboarding-back {
+  font-size: 20px;
+  color: var(--navy);
+}
+.onboarding-step-count {
+  font-size: 13px;
+  color: #6b7280;
+}
+.progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--pink);
+  transition: width 0.25s ease;
+}
+.onboarding-content {
+  margin-top: 32px;
+}
+.onboarding-content h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+.onboarding-sub {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #4b5568;
+  line-height: 1.5;
+}
+
+/* Photo upload */
+.photo-drop {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  border-radius: 16px;
+  border: 1.5px dashed var(--border);
+  color: #6b7280;
+  font-size: 14.5px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.photo-drop input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile preview card */
+.profile-preview-card {
+  margin-top: 24px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.profile-preview-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.profile-preview-card h2 {
+  margin-top: 16px;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.profile-preview-location {
+  padding: 0 20px;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+.profile-preview-about {
+  padding: 0 20px;
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
